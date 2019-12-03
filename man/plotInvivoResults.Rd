@@ -4,9 +4,9 @@
 \alias{plotInvivoResults}
 \title{Plot in vivo results}
 \usage{
-plotInvivoResults(r, gene = "all", color = "black",
-  xlab = "Number of cells", ylab = "Number of SNVs in oncogenes",
-  title = "", pdf_out)
+plotInvivoResults(r, cell_type = "SI", gene = "all", color = "black",
+  xlab = "Probability", ylab = "Number of cells", title = "",
+  pdf_out)
 }
 \arguments{
 \item{r}{Dataframe with results from \code{\link{probDriverMut}}}

@@ -61,8 +61,7 @@ in the article found on bioRxiv:
 \section{Load package}
 
 If you are a first time user, read the README on how to install the package 
-from Github. After installing load the package by using the path to the
-package:
+from Github. After installation load the package:
 
 <<setwd, echo = F>>=
 options(stringsAsFactors = F)
@@ -70,9 +69,8 @@ options(stringsAsFactors = F)
 
 
 <<load_package>>=
-devtools::load_all("../../DriverProbs")
+library(DriverProbabilities)
 @
-
 
 \section{Data}
 

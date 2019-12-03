@@ -23,6 +23,11 @@
 #' @param mut_spec_invitro_file Character indicating the file with the invivo mutational spectrum
 #'
 #' @return All necessary data for processing downstream will be imported as global variables
+#' 
+#' @import BSgenome
+#' @import BSgenome.Hsapiens.UCSC.hg19
+#' 
+#' @export
 #'
 
 processData <- function(mutation_rate_file,
@@ -38,7 +43,7 @@ processData <- function(mutation_rate_file,
                         mut_spec_invitro_file,
                         mut_spec_invivo_file){
   
-  mutations <- read.table(file=mutation_rate_file, header=T)
+  mutations <- read.table(file=mutation_rate_file, header=T,sep="\t")
   mutation_rate <- foreach(t = unique(mutations$Cell_type)) %do% {
     m <- mean(subset(mutations, Cell_type==t)[,3])
     s <- sd(subset(mutations, Cell_type==t)[,3])
@@ -54,7 +59,7 @@ processData <- function(mutation_rate_file,
     driver_counts <- countDriverSNVs(drivers, per_gene = prob_per_gene, tri = trinucleotide)
   }
   
-  CDS_table1 <- read.table(file=CDS_dep_invitro_file, header=T, sep='\t')
+  CDS_table1 <- read.table(file=CDS_dep_invitro_file, header=T)
   CDS_table2 <- read.table(file=sample_celltypes_file, header=T, sep='\t')
   
   CDS_length <- getCDSLength(CDS_table1, CDS_table2)
@@ -70,13 +75,13 @@ processData <- function(mutation_rate_file,
   dep_table_CDS <- subset(dep_table, region=='CDS')
   dep_invitro <- foreach(t = unique(dep_table_invitro$tissue)) %do% {
     dep <- dep_table_CDS[dep_table_CDS$tissue==t, 'observed']/dep_table_CDS[dep_table_CDS$tissue==t, 'expected']
-    return(mean(dep))
+    return(median(dep))
   }
   names(dep_invitro) <- unique(dep_table_invitro$tissue)
   
   dep_invivo <- mean(dep_table_invivo[dep_table_invivo$region=="CDS",'observed']/dep_table_invivo[dep_table_invivo$region=="CDS",'expected'])
   
-  probs_snv_table <- read.table(file = mut_spec_invitro_file, header=T)
+  probs_snv_table <- read.table(file = mut_spec_invitro_file, header=T, sep = "\t")
   probs_snv <- foreach(type = unique(probs_snv_table$by)) %do% {
     tb <- subset(probs_snv_table, by == type)
     p <- tb$mean[order(tb$variable)]

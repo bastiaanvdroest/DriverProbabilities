@@ -1,0 +1,7 @@
+"variable" "by" "mean" "stdev" "total_individuals" "total_mutations" "sub_type"
+"C>A" "all" 0.15363882226489 0.0149636033829072 21 "No. mutations = 44,404" "C>A"
+"C>G" "all" 0.0527027522157349 0.00963849985803943 21 "No. mutations = 44,404" "C>G"
+"C>T" "all" 0.525742794513621 0.0353368610617993 21 "No. mutations = 44,404" "C>T"
+"T>A" "all" 0.0715204012046751 0.00956987055103231 21 "No. mutations = 44,404" "T>A"
+"T>C" "all" 0.153055283428761 0.0164399013766336 21 "No. mutations = 44,404" "T>C"
+"T>G" "all" 0.0433399463723184 0.00654326505896526 21 "No. mutations = 44,404" "T>G"

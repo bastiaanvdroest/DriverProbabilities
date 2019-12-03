@@ -42,7 +42,7 @@ plotMutationsPerCell <- function(r,
 
   mut_plot <- ggplot(data=r, aes(x=cells, y=muts, colour=gene))+
     geom_line(aes(linetype=cell_type), size=1) +
-    scale_linetype_manual(values=c("dotted", "dashed","solid")) +
+    scale_linetype_manual(values=c("dotted", "dashed","solid","dotdash")) +
     labs(x=xlab, y=ylab, title = title, 
          color='Type of mutations',
          linetype='Cell types') 

@@ -1,0 +1,19 @@
+Sample	Type
+17513D_SC33	Liver
+17513D_SC105	Liver
+C30913D_SC109	Liver
+C30913D_SC125	Liver
+EWSEV_SCA1	iPS
+EWSEV_SCA3	iPS
+EWSEV_SCB3	iPS
+STE0072_SC12A	Small_Intestine
+
+STE0072_SC23B	Small_Intestine
+
+STE0072_SC31A	Small_Intestine
+
+STE0076_SC12C	Small_Intestine
+
+STE0076_SC23A	Small_Intestine
+
+STE0076_SC32A	Small_Intestine

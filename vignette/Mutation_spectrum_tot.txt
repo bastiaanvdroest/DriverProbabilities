@@ -1,8 +1,0 @@
-"variable"	"by"	"mean"	"stdev"	"total_individuals"	"total_mutations"	"sub_type"
-"C>A"	"all"	0.348042652373148	0.053172865591592	13	"No. mutations = 3,888"	"C>A"
-"C>G"	"all"	0.0834784594819445	0.0218123467630745	13	"No. mutations = 3,888"	"C>G"
-"C>T at CpG"	"all"	0.054944547242118	0.0184326306203266	13	"No. mutations = 3,888"	"C>T"
-"C>T other"	"all"	0.209156209562267	0.030875250611578	13	"No. mutations = 3,888"	"C>T"
-"T>A"	"all"	0.0936417401728267	0.0213297893151833	13	"No. mutations = 3,888"	"T>A"
-"T>C"	"all"	0.149130691584284	0.0347358386334068	13	"No. mutations = 3,888"	"T>C"
-"T>G"	"all"	0.0616056995834117	0.0240110227912349	13	"No. mutations = 3,888"	"T>G"

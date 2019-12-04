@@ -5,6 +5,7 @@
 #' mutation accumulation of SI ASC.
 #'
 #' @param r Dataframe with results from \code{\link{probDriverMut}}
+#' @param cell_type Character string to indicate which cell type must be plotted
 #' @param gene Character string to indicate which gene must be plotted
 #' @param color Character string for color of line in figure
 #' @param xlab Character string with label for x-axis. Default is\cr
@@ -28,7 +29,7 @@
 #' 
 
 plotInvivoResults <- function(r,
-                              cell_type = "SI",
+                              cell_type,
                               gene ="all",
                               color = "black",
                               xlab = "Probability",
@@ -40,14 +41,17 @@ plotInvivoResults <- function(r,
   if (!(gene %in% r$gene))
     stop("Given gene name not found in 'r'")
   
+  if(!(cell_type %in% r$cell_type))
+    stop("Given cell type not found in 'r'")
+  
   if (gene == "all"){
-    invivo_plot <- ggplot(r[r$cell_type == 'SI' & r$gene=='all' & r$year > 1e-5 & r$year < 1,], aes(x=probs, y=cells))+
+    invivo_plot <- ggplot(r[r$cell_type == cell_type & r$gene=='all' & r$year > 1e-5 & r$year < 1,], aes(x=probs, y=cells))+
       geom_point(color = color) +
       geom_line(size=2, color = color) +
       scale_y_log10(sec.axis = sec_axis(~f_prob_all(.), name="Years of adult life", breaks=c(c(1,5) %o% 10^(-4:0))), breaks = c(1 %o% 10^(4:7))) +
       labs(title=title, x = xlab, y=ylab)
   } else if (gene == "BRAF.V600E"){
-    invivo_plot <- ggplot(r[r$cell_type == 'SI' & r$gene=='BRAF.V600E' &  r$year < 100,], aes(x=probs, y=cells))+
+    invivo_plot <- ggplot(r[r$cell_type == cell_type & r$gene=='BRAF.V600E' &  r$year < 100,], aes(x=probs, y=cells))+
       geom_point(color = color) +
       geom_line(size=2, color = color) +
       scale_y_continuous(expand = c(0,0), sec.axis = sec_axis(~f_prob(.), name="Years of adult life" )) + #, breaks=c(seq(1,9,2) %o% 10^(0:7))), breaks=c(seq(1,9,2) %o% 10^(7:11))) +
